@@ -1,6 +1,6 @@
 using Unity.Mathematics;
 using UnityEngine;
-using static UnityEngine.ParticleSystem;
+//using static UnityEngine.ParticleSystem;
 
 public class Bullet : MonoBehaviour, IMovable
 {
@@ -8,23 +8,15 @@ public class Bullet : MonoBehaviour, IMovable
     [SerializeField] private int _damage;
     [SerializeField] private float _speed;
     [Space(1)]
-
-    //[SerializeField] private ParticleSystem bulletExplosion;
+   
     [SerializeField] private BulletData bulletData; // ScripTable object to update cons for player
 
-    private Vector2 _directon;
-    [SerializeField] private GameObject objectPool;
-    private ObjectPool pool;
+    private Vector2 _directon;   
    
     void Start()
     {
         _damage = bulletData.damage;
-        _speed = bulletData.speed;
-        objectPool = GameObject.Find("ObjectPool");
-         pool = objectPool.GetComponent<ObjectPool>();
-       // _firePoint = GameObject.FindGameObjectWithTag("FirePoint").transform;
-        //rb = GetComponent<Rigidbody2D>();
-          
+        _speed = bulletData.speed;              
     }
 
     void Update()
@@ -41,22 +33,13 @@ public class Bullet : MonoBehaviour, IMovable
         transform.Translate(_directon * _speed * Time.deltaTime);
     }
 
-    //public void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    if (collision.gameObject.CompareTag("Enemy"))
-    //    {
-    //        Instantiate(bulletExplosion, transform.position, transform.rotation);
-    //        pool.ReturnToPool(gameObject);
-    //    }
-    //}
-
     public void DeleteBulletOutOfRange()
     {
         /* Logic code not good
          if camerea follow player, position player out bound, bullet return pool immedeatly */
         if (math.abs(transform.position.x) > 16 || math.abs(transform.position.y) > 16)
         {
-            pool.ReturnToPool(gameObject);            
+            ObjectPool.instance.ReturnToPool(gameObject);            
            // Debug.Log("destroy bullet");
         }
     }

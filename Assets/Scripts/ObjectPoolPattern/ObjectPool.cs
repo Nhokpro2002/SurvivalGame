@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool : Singleton<ObjectPool> // pool for bullet
 {
     public GameObject prefab; // The object to pool
     public int initialSize = 10;

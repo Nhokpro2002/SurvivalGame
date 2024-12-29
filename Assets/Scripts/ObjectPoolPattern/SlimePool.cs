@@ -1,8 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SlimePool : MonoBehaviour
+public class SlimePool : Singleton<SlimePool>
 {
     public GameObject slimeEnemy; // Prefabs
     public int initialSize = 5;
@@ -34,7 +33,7 @@ public class SlimePool : MonoBehaviour
             obj = pool.Dequeue();
         }
         else
-        {           
+        {
             // If the pool is empty, create a new object
             obj = Instantiate(slimeEnemy);
         }
@@ -51,6 +50,6 @@ public class SlimePool : MonoBehaviour
         obj.SetActive(false);
 
         // Return the object to the pool
-        pool.Enqueue(obj);          
+        pool.Enqueue(obj);
     }
 }

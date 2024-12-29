@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6032215751583615592}
   - component: {fileID: 6215696393870768611}
   - component: {fileID: 4820318013066960015}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Slime
-  m_TagString: SlimeEnemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,6 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 04b5276449bbdbf40b8c8b812a0f6215, type: 2}
   player: {fileID: 0}
   animator: {fileID: 0}
-  pool: {fileID: 0}
 --- !u!61 &4820318013066960015
 BoxCollider2D:
   m_ObjectHideFlags: 0

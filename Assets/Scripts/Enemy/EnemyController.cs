@@ -8,14 +8,14 @@ public class EnemyController : MonoBehaviour
     public EnemyData enemyData;
     public GameObject player; 
     public Animator animator;
-    public SlimePool pool;
-    private GameObject _slimePool;
+    //public SlimePool pool;
+    //private GameObject _slimePool;
     
     // Start is called before the first frame update
     void Start()
     {
-        _slimePool = GameObject.FindWithTag("SlimePool");
-        pool = _slimePool.GetComponent<SlimePool>();    
+        //_slimePool = GameObject.FindWithTag("SlimePool");
+        //pool = _slimePool.GetComponent<SlimePool>();    
         player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         _speed = enemyData.speed;
@@ -44,21 +44,23 @@ public class EnemyController : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("HealthPot")
+            || collision.gameObject.CompareTag("Enemy"))
         {
-            //_health--;          
-            if (_health-- == 0)
-            {               
-                animator.Play("SlimeDealth");                
-                StartCoroutine(ReturnToPoolAfterDelay(0.2f));                
-            }
+            return;                                                                                    
         }     
+        else
+        {
+            Debug.Log("Va chạm với enemy");
+            animator.Play("SlimeDealth");
+            StartCoroutine(ReturnToPoolAfterDelay(0.2f));
+        }
     }
 
     private IEnumerator ReturnToPoolAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);        
-        pool.ReturnToPool(gameObject);
+        SlimePool.instance.ReturnToPool(gameObject);
     }
 
     private void OnEnable()
