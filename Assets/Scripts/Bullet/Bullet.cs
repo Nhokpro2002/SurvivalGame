@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour, IMovable
    
     [SerializeField] private BulletData bulletData; // ScripTable object to update cons for player
 
-    private Vector2 _directon;   
+    private Vector2 _directon;   // fire direction of bullet
    
     void Start()
     {
@@ -37,15 +37,15 @@ public class Bullet : MonoBehaviour, IMovable
     {
         /* Logic code not good
          if camerea follow player, position player out bound, bullet return pool immedeatly */
-        if (math.abs(transform.position.x) > 16 || math.abs(transform.position.y) > 16)
+        if (math.abs(transform.position.x) > 20 || math.abs(transform.position.y) > 20)
         {
-            ObjectPool.instance.ReturnToPool(gameObject);            
+            ObjectPool.Instance.ReturnToPool(gameObject);            
            // Debug.Log("destroy bullet");
         }
     }
 
     public void Rotate(Vector2 newDirection)
     {
-        _directon = newDirection;
+        _directon = newDirection;       
     }
 }

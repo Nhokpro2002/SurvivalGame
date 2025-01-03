@@ -1,14 +1,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BatPool : Singleton<BatPool>
+public class BatPool : MonoBehaviour
 {
+    public static BatPool Instance; 
     public GameObject batEnemy; // Prefabs
     public int initialSize = 5;
     //private Transform initialTransform;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(this);
+        }
+    }
     void Start()
     {
         // Find the fire point in the scene

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : Singleton<MainMenu>
+public class MainMenu : MonoBehaviour
 {
     public void PressStartButton()
     {

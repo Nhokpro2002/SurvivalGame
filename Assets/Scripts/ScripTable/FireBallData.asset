@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd470b44fcc9e9b48adf2a379b375aed, type: 3}
   m_Name: FireBallData
   m_EditorClassIdentifier: 
-  fireBallSpeed: 3
+  fireBallSpeed: 5
   firBallDamage: 3
   timeResetSkill: 5

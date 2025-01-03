@@ -21,12 +21,12 @@ public class SpawnEnemySystem : MonoBehaviour
 
         // Tính tọa độ spawn dựa trên công thức tọa độ cực
         Vector2 spawnPosition = new Vector2(
-            Player.instance.transform.position.x + Mathf.Cos(radian) * distance,
-            Player.instance.transform.position.y + Mathf.Sin(radian) * distance
+            Player.Instance.transform.position.x + Mathf.Cos(radian) * distance,
+            Player.Instance.transform.position.y + Mathf.Sin(radian) * distance
         );
 
         // Lấy kẻ địch từ Object Pool
-        GameObject slimeEnemyPrefab = SlimePool.instance.GetFromPool();
+        GameObject slimeEnemyPrefab = SlimePool.Instance.GetFromPool();
         slimeEnemyPrefab.transform.position = spawnPosition;
     }
 
@@ -40,12 +40,12 @@ public class SpawnEnemySystem : MonoBehaviour
 
         // Tính tọa độ spawn dựa trên công thức tọa độ cực
         Vector2 spawnPosition = new Vector2(
-            Player.instance.transform.position.x + Mathf.Cos(radian) * distance,
-            Player.instance.transform.position.y + Mathf.Sin(radian) * distance
+            Player.Instance.transform.position.x + Mathf.Cos(radian) * distance,
+            Player.Instance.transform.position.y + Mathf.Sin(radian) * distance
         );
 
         // Lấy kẻ địch từ Object Pool
-        GameObject batEnemyPrefab = BatPool.instance.GetFromPool();
+        GameObject batEnemyPrefab = BatPool.Instance.GetFromPool();
         batEnemyPrefab.transform.position = spawnPosition;
     }
 }

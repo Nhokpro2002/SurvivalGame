@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealthPotSpawnSystem : MonoBehaviour
 {
@@ -10,9 +8,9 @@ public class HealthPotSpawnSystem : MonoBehaviour
     private float _time;
     // Start is called before the first frame update
     void Start()
-    {
-        //_healthPotPool = 
-        _pool = _healthPotPool.GetComponent<HealthPotPool>();
+    {      
+        _pool = _healthPotPool.GetComponent<HealthPotPool>();      
+        Player = GameObject.FindWithTag("Player");      
     }
 
     // Update is called once per frame
@@ -24,7 +22,6 @@ public class HealthPotSpawnSystem : MonoBehaviour
             Spawn();
             _time = 0;
         }
-
     }
 
     void Spawn()
@@ -35,12 +32,7 @@ public class HealthPotSpawnSystem : MonoBehaviour
         Vector2 spawnPosition = new Vector2(
             Player.transform.position.x +  distance,
             Player.transform.position.y +  distance
-            );
-        // Nếu là 2D game
-
-
-        // Sinh kẻ địch tại vị trí spawn
-        //Instantiate(slimeEnemyPrefab, spawnPosition, Quaternion.identity);
+            );        
         GameObject healthPotPrefab = _pool.GetFromPool();
         healthPotPrefab.transform.position = spawnPosition;
     }

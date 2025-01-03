@@ -6,7 +6,11 @@ public class HeathPot : MonoBehaviour
 
     private void Awake()
     {      
-        _player = GameObject.FindWithTag("Player");      
+        _player = GameObject.FindWithTag("Player");   
+        //if ( _player == null )
+        //{
+        //    Destroy(gameObject);
+        //}
     }
    
     private void Update()
@@ -22,12 +26,12 @@ public class HeathPot : MonoBehaviour
             transform.position = newPosition;
         }
 
-        transform.RotateAround(transform.position, Vector3.up, 10);
+        transform.RotateAround(transform.position, Vector3.up, 3);
     }
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) {
-            HealthPotPool.instance.ReturnToPool(gameObject);
+            HealthPotPool.Instance.ReturnToPool(gameObject);
         }
     }  
 }

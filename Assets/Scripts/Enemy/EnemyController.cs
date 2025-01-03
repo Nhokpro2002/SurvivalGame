@@ -60,7 +60,7 @@ public class EnemyController : MonoBehaviour
     private IEnumerator ReturnToPoolAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);        
-        SlimePool.instance.ReturnToPool(gameObject);
+        SlimePool.Instance.ReturnToPool(gameObject);
     }
 
     private void OnEnable()

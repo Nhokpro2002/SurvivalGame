@@ -64,7 +64,7 @@ public class BatEnemyController : MonoBehaviour
     private IEnumerator ReturnToPoolAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        BatPool.instance.ReturnToPool(gameObject);
+        BatPool.Instance.ReturnToPool(gameObject);
     }
 
     private void OnEnable()

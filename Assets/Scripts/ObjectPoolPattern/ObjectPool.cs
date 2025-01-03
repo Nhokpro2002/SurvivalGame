@@ -1,14 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : Singleton<ObjectPool> // pool for bullet
+public class ObjectPool : MonoBehaviour // pool for bullet
 {
-    public GameObject prefab; // The object to pool
-    public int initialSize = 10;
+    public static ObjectPool Instance { get; set; }
+    public GameObject bullet; // The object to pool
+    public int initialSize = 5;
     private Transform _firePoint;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         // Find the fire point in the scene
@@ -16,16 +28,20 @@ public class ObjectPool : Singleton<ObjectPool> // pool for bullet
 
         // Initialize the pool with inactive objects
         for (int i = 0; i < initialSize; i++)
-        {
-            GameObject obj = Instantiate(prefab);
-            obj.SetActive(false);
-            pool.Enqueue(obj);
+        {                     
+                GameObject obj = Instantiate(bullet);
+                obj.SetActive(false);
+                pool.Enqueue(obj);
+            
+            //GameObject obj = Instantiate(bullet);
+            //obj.SetActive(false);
+            //pool.Enqueue(obj);
         }
     }
 
     public GameObject GetFromPool()
     {
-        GameObject obj;
+        GameObject obj = null;
 
         // Check if pool has an available object
         if (pool.Count > 0)
@@ -34,9 +50,10 @@ public class ObjectPool : Singleton<ObjectPool> // pool for bullet
         }
         else
         {
-            // If the pool is empty, create a new object
-            obj = Instantiate(prefab);
+            // If the pool is empty, create a new object                    
+                 obj = Instantiate(bullet);                                       
         }
+      
 
         // Reset position and activate the object
         obj.transform.position = _firePoint.position;

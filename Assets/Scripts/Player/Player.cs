@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-public class Player : Singleton<Player>
+public class Player : MonoBehaviour
 {
-
+    //public static Player Instance;
     public Image healthBar;
     private bool _isFacingRight;
     [SerializeField] private float _speed;
@@ -16,11 +16,9 @@ public class Player : Singleton<Player>
     private ObjectPool pool;
     [SerializeField] private PlayerData playerData;
 
-    public int CurrentHealth { get; set; }
+    public int CurrentHealth { get; set; }   
 
-    //private static Transform _playerTransform;
-
-    protected override void Awake()
+    protected void Awake()
     {  
         _speed = playerData.speed;
         pool = objectPool.GetComponent<ObjectPool>();
@@ -86,6 +84,7 @@ public class Player : Singleton<Player>
             GameObject bullet = pool.GetFromPool();
             Bullet bulletScript = bullet.GetComponent<Bullet>();
             bulletScript.Rotate(shootDirection);
+            
         }
     }
 
@@ -101,10 +100,12 @@ public class Player : Singleton<Player>
     public void GetDamage(int number)
     {
         _currentHealth -= number;
-        if (_currentHealth < 0)
+        if (_currentHealth == 0)
         {
-            _currentHealth = 0;
-            Debug.Log("Game Over");          
+            //_currentHealth = 0;
+            Debug.Log("Game Over");
+            SceneManager.LoadScene(0);
+            Resources.UnloadUnusedAssets();
         }
         healthBar.fillAmount = (float) _currentHealth / _maxHealth;
     }

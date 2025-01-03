@@ -1,14 +1,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthPotPool : Singleton<HealthPotPool>
+public class HealthPotPool : MonoBehaviour
 {
+    public static HealthPotPool Instance;
     public GameObject HealthPot; // Prefabs
     public int initialSize = 5;
     //private Transform initialTransform;
 
     private Queue<GameObject> pool = new Queue<GameObject>();
 
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
     void Start()
     {
         

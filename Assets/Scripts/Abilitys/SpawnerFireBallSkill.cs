@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,25 +23,32 @@ public class SpawnerFireBallSkill : MonoBehaviour
         _countDown -= Time.deltaTime / 2;
         if (_countDown <= 0 && Input.GetKeyDown(KeyCode.F1))
         {
-            SpawnFireBallSkill();
+            StartCoroutine(SpawnFireBallSkillCoroutine());
             _countDown = _timeResetSkill;
         }
         _fireBallIcon.fillAmount = _countDown / _timeResetSkill;
     }
 
+    private IEnumerator SpawnFireBallSkillCoroutine()
+    {
+        for (int i = 0; i < 20; i++)
+        {
+            SpawnFireBallSkill();
+            yield return new WaitForSeconds(1f);
+        }
+    }
+
     public void SpawnFireBallSkill()
     {
-        for (int i = 0; i < 15; i++)
-        {
-            float x = Random.Range(-2, 25);
-            float y = Random.Range(20, 25);
-            Vector3 spawnPosition = new Vector3(x, y, 0);
+        float x = Random.Range(-8, 40);
+        float y = Random.Range(20, 25);
+        Vector3 spawnPosition = new Vector3(x, y, 0);
 
-            // Create a rotation with -130 degrees around the Z-axis
-            Quaternion rotation = Quaternion.Euler(0, 0, -130);
+        // Create a rotation with -130 degrees around the Z-axis
+        Quaternion rotation = Quaternion.Euler(0, 0, -130);
 
-            // Instantiate the fireball with the specified position and rotation
-            Instantiate(_fireBall, spawnPosition, rotation);
-        }      
+        // Instantiate the fireball with the specified position and rotation
+        Instantiate(_fireBall, spawnPosition, rotation);
     }
+
 }
