@@ -240,7 +240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a207c5b5d610f9e47a805a0483ff9def, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _donDestroyOnLoad: 1
   healthBar: {fileID: 479145584}
   _speed: 5
   _bullet: {fileID: 2718726526446350902, guid: 49d7e04d0f9a0c747b6eae681ddd1063, type: 3}
@@ -23428,7 +23427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bfcb8d3c6891e94aa71df9cf2c70f0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _donDestroyOnLoad: 1
   HealthPot: {fileID: 2882350847788872935, guid: 020646345d2bde846a0f7800b749cc6b, type: 3}
   initialSize: 5
 --- !u!4 &949971536
@@ -23919,7 +23917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e9128f56070aa7488ddb4b780f9a925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _donDestroyOnLoad: 1
   bullet: {fileID: 2718726526446350902, guid: 49d7e04d0f9a0c747b6eae681ddd1063, type: 3}
   initialSize: 15
 --- !u!1 &1076531764
@@ -24134,7 +24131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61ff7834e9467414b97d709f315d18c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _donDestroyOnLoad: 1
   slimeEnemy: {fileID: 1754093459519804677, guid: b2c2255a0053c3b4ab487ddbe08e945f, type: 3}
   initialSize: 20
 --- !u!1 &1164543654
@@ -24908,7 +24904,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06f7df6f73a99d84e81aba1aa49eaa59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _donDestroyOnLoad: 1
   batEnemy: {fileID: 1837809170225045426, guid: b47becfacb273d14d98227c57bca3115, type: 3}
   initialSize: 5
 --- !u!1 &1440799833
